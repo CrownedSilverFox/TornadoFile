@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/static/async_client.js"></script>
+<script src="/static/download.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <form>
+                <div class="form-group">
+                    <label for="FileSelect">Files:</label>
+                    <select class="form-control" id="FileSelect">
+                        {% for file in files %}
+                            <option>{{list(file.items())[0][0]}}: {{list(file.items())[0][1]}}</option>
+                        {% end %}
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <button class="btn btn-primary" onclick="get_content({{chunk_num}})">Download</button>
+</div>
+</body>
+</html>
