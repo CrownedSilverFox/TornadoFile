@@ -5,14 +5,6 @@ import os
 import socket
 from config import *
 
-class App:
-    def __init__(self):
-        self.files = []
-        self.max_streams = 4
-
-    def file_response(self):
-        pass
-
 
 class RangeHandler(tornado.web.RequestHandler):
 
@@ -69,11 +61,9 @@ class RangeHandler(tornado.web.RequestHandler):
         return content
     
     async def set_content_size(self, abspath):
-        # bts = b'Fuck this Fucking World'
         with open(abspath, 'rb') as f:
             bts = bytearray(f.read())
         self.content_size = len(bts)
-        # print(self.content_size)
 
 
 class IndexHandler(tornado.web.RequestHandler):
